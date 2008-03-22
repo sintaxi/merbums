@@ -1,11 +1,28 @@
 <h2><%= @forum.name %></h2>
 <div><%= @forum.description_html %></div>
 
-<p><%= link_to 'Create new Topic', url(:new_forum_topic, :forum_id => @forum ) %></p>
-
-<h3>Topics</h3>
-<% @forum.topics.each do |topic| %>
-  <div>
-    <p><%= link_to topic.title, url(:forum_topic,topic) %></p>
-  </div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Topics</th>
+      <th>Posts</th>
+      <th>Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @forum.topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.title, url(:forum_topic,topic) %></td>
+        <td><%= topic.posts.size %></td>
+        <td><%= topic.posts.reverse.first.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">
+        <p><%= link_to 'Create new Topic', url(:new_forum_topic, :forum_id => @forum ) %></p>
+      </td>
+    </tr>
+  </tfoot>
+</table>

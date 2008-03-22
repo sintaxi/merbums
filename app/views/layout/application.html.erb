@@ -11,7 +11,13 @@
   </head>
   <body>
     <div class="header">
-      <p><%= link_to "home", "/" %></p>
+      <ul>
+        <li><%= link_to "home", "/" %></li>
+        <%= tag :li, link_to("Login/Register",url(:login)) unless logged_in? %>
+        <% if logged_in? %>
+          <li><%= link_to "logout", url(:logout) %></li>
+        <% end %>
+      </ul>
     </div>
     <div class="content">
       

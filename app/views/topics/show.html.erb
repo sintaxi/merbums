@@ -1,15 +1,33 @@
 <h2><%= @topic.title %></h2>
-<% @topic.posts.each do |post| %>
-  <div>
-    <%= post.body_html %>
-    <p><small>Posted by <%= post.user.login %></small></p>
-  </div>
-<% end %>
 
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topic.posts.each do |post| %>
+      <tr>
+        <td class="author">
+          <p><%= image_tag post.user.gravatar %><br />
+          <%= post.user.login %><br />
+          <%= post.user.posts.size %> Posts</p>
+        </td>
+        <td><%= post.body_html %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-
-
-<% form_for @post, :action => url(:forum_topic_post,{:forum_id => @forum, :topic_id => @topic}) do %>
-  <p><%= text_area_control :body, :label => "Post" %></p>
-  <p><%= submit_button "Submit" %></p>
+<% if logged_in? %>
+  <% form_for @post, :action => url(:forum_topic_post,{:forum_id => @forum, :topic_id => @topic}) do %>
+    <% fieldset :legend => "Post a Reply" do %>
+      <p><%= text_area_control :body, :label => "Reply" %></p>
+      <p><%= submit_button "Submit" %></p>
+    <% end %>
+  <% end %>
+<% else %>
+<p><%= link_to "Login", url(:login) %> to reply</p>
 <% end %>

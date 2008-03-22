@@ -45,3 +45,19 @@ td + td {
 label {
 	display:block;
 }
+ul {
+	list-style:none;
+}
+ul li {
+	float:left;
+}
+li {
+	display:block;
+	padding-right:1em;
+}
+.forum_title {
+	font-size:1.5em;
+}
+td.author {
+	width:10em;
+}

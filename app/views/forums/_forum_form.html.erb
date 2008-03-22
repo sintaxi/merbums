@@ -1,6 +1,8 @@
 <% form_for @forum, :action => url(:forum,@forum) do %>
-  <p><%= text_control :name, :label => "Forum Name" %></p>
-  <p><%= text_area_control :description, :rows => 5, :cols => 30, :label => "Forum Description" %></p>
-  <p><%= text_control :position, :label => "Position" %></p>
-  <p><%= submit_button "Submit" %></p>
+  <% fieldset :legend => "#{action_name.titleize} Forum" do %>
+    <p><%= text_control :name, :label => "Forum Name" %></p>
+    <p><%= text_area_control :description, :rows => 5, :cols => 30, :label => "Forum Description" %></p>
+    <p><%= text_control :position, :label => "Position" %></p>
+    <p><%= submit_button "Submit" %></p>
+  <% end %>
 <% end %>

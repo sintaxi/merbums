@@ -22,7 +22,7 @@ class Forums < Application
   def create
     @forum = Forum.new(params[:forum])
     if @forum.save
-      redirect url(:forum, @forum)
+      redirect url(:forums)
     else
       render :new
     end
@@ -39,7 +39,7 @@ class Forums < Application
     @forum = Forum.find_by_id(params[:id])
     raise NotFound unless @forum
     if @forum.update_attributes(params[:forum])
-      redirect url(:forum, @forum)
+      redirect url(:forums)
     else
       raise BadRequest
     end

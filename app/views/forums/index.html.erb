@@ -1,4 +1,4 @@
-<% if true # hide for admin later %>
+<% if logged_in? %>
 <div>
   <p><%= link_to "Add a New Forum", url(:new_forum) %></p>
 </div>
@@ -14,10 +14,16 @@
 <% @forums.each do |forum| %>
   <tr>
     <td>
-      <p><%= link_to forum.name, url(:forum_topics, :forum_id => forum) %> <%= link_to 'Edit', url(:edit_forum,forum) %></p>
+      <%= link_to forum.name, url(:forum_topics, :forum_id => forum), :class => "forum_title" %>
+      <p><%= forum.topics.size %> Topics - <%= forum.posts.size %> Posts</p>
       <%= forum.description_html %>
+      <p><small></small></p>
     </td>
-    <td><p></p></td>
+    <td>
+      <p>
+        <%= forum.posts.reverse.first.updated_at %>
+      </p>
+    </td>
   </tr>
 <% end %>
   </tbody>

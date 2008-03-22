@@ -1,4 +1,5 @@
 <% form_tag :action => url(:login) do -%>
+<% fieldset :legend => ("Login or " + link_to("Register", url(:new_user))) do %>
 <p><label for="login">Login</label><br/>
 <%= text_field :name => "login" %></p>
 
@@ -11,4 +12,5 @@
 -->
 
 <p><%= submit_button 'Log in' %></p>
+<% end %>
 <% end -%>
