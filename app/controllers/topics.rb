@@ -29,7 +29,7 @@ class Topics < Application
   def create
     @topic = @forum.topics.new(params[:topic].merge(:user => current_user))
     if @topic.save
-      redirect url(:forum_topic, @topic)
+      redirect url(:forum_topic_posts,:topic_id => @topic)
     else
       render :new
     end
@@ -46,7 +46,7 @@ class Topics < Application
     @topic = Topic.find_by_id(params[:id])
     raise NotFound unless @topic
     if @topic.update_attributes(params[:topic])
-      redirect url(:topic, @topic)
+      redirect url(:forum_topic_posts,:topic_id => @topic)
     else
       raise BadRequest
     end

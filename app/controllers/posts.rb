@@ -8,32 +8,6 @@ class Posts < Application
     @topic = Topic.find(params[:topic_id])
   end
   
-  def index
-    @posts = Post.find(:all)
-    display @posts
-  end
-
-  def show
-    @post = Post.find_by_id(params[:id])
-    raise NotFound unless @post
-    display @post
-  end
-
-  def new
-    only_provides :html
-    @post = Post.new(params[:post])
-    render
-  end
-
-  def create
-    @post = Post.new(params[:post].merge({:user => current_user,:forum => @forum,:topic => @topic}))
-    if @post.save
-      redirect url(:forum_topic, @topic)
-    else
-      render :new
-    end
-  end
-
   def edit
     only_provides :html
     @post = Post.find_by_id(params[:id])
