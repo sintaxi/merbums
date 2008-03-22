@@ -5,7 +5,6 @@ class UserCounterCaches < ActiveRecord::Migration
   end
   
   def self.down
-    
     remove_column :users, :topics_count
     remove_column :users, :posts_count
   end

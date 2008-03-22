@@ -16,6 +16,7 @@
         <%= tag :li, link_to("Login/Register",url(:login)) unless logged_in? %>
         <% if logged_in? %>
           <li><%= link_to "logout", url(:logout) %></li>
+          <li><%= link_to "users", url(:users) %></li>
         <% end %>
       </ul>
     </div>

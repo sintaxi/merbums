@@ -3,6 +3,11 @@ class Users < Application
   
   skip_before :login_required
   
+  def index
+    @users = User.find(:all)
+    display @users
+  end
+  
   def new
     only_provides :html
     @user = User.new(params[:user] || {})
