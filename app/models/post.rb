@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   end
   
   def formatted_body
-    write_attribute(:body_html, RedCloth.new(body).to_html  )
+    write_attribute(:body_html, RedCloth.new(Whistler.white_list(body)).to_html  )
   end
   
 end
