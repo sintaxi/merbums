@@ -45,7 +45,7 @@ class Posts < Application
     @post = Post.find_by_id(params[:id])
     raise NotFound unless @post
     if @post.update_attributes(params[:post])
-      redirect url(:post, @post)
+      redirect url(:forum_topic, @topic)
     else
       raise BadRequest
     end

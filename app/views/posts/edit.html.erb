@@ -1,3 +1,6 @@
-<h1>Posts controller, edit action</h1>
-
-<p>Edit this file in <tt>app/views/posts/edit.html.erb</tt></p>
+<% form_for @post, :action => url(:forum_topic_post,@post) do %>
+  <% fieldset :legend => "Edit Post" do %>
+    <p><%= text_area_control :body, :label => "Body" %></p>
+    <p><%= submit_button "Submit" %></p>
+  <% end %>
+<% end %>
