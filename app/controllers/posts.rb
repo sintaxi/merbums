@@ -7,6 +7,15 @@ class Posts < Application
     @forum = Forum.find(params[:forum_id])
     @topic = Topic.find(params[:topic_id])
   end
+
+  def create
+    @post = Post.new(params[:post].merge({:user => current_user,:forum => @forum,:topic => @topic}))
+    if @post.save
+      redirect url(:forum_topic, @topic)
+    else
+      render :new
+    end
+  end
   
   def edit
     only_provides :html
