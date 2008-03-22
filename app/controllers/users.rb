@@ -13,6 +13,7 @@ class Users < Application
     cookies.delete :auth_token
     
     @user = User.new(params[:user])
+    @user.admin = true if User.find(:all).empty?
     if @user.save
       redirect_back_or_default('/')
     else

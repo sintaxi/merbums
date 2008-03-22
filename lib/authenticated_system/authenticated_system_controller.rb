@@ -6,6 +6,10 @@ module AuthenticatedSystem
       def logged_in?
         current_user != :false
       end
+      
+      def is_admin?
+        logged_in? && current_user.admin
+      end
     
       # Accesses the current user from the session.  Set it to :false if login fails
       # so that future calls do not hit the database.

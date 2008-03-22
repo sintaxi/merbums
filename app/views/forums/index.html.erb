@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if is_admin? %>
 <div>
   <p><%= link_to "Add a New Forum", url(:new_forum) %></p>
 </div>
