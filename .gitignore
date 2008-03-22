@@ -1,3 +1,5 @@
 .DS_Store
+config/database.yml
+db/*.sqlite3
 schema/schema.rb
 log/*
