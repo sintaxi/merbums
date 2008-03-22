@@ -29,7 +29,7 @@ table {
 	border-collapse:collapse;
 }
 th{
-	background-color:#3F3F3F;
+	background-color:#333;
 	color:#fff;
 	text-align:left;
 }
@@ -41,6 +41,9 @@ td {
 }
 td + td {
 	border-left:1px solid #111;
+}
+th + th {
+	border-left:1px solid #222;
 }
 label {
 	display:block;
@@ -60,4 +63,14 @@ li {
 }
 td.author {
 	width:10em;
+}
+th.post_count, td.post_count {
+	width:2em;
+	text-align:center;
+}
+th.last_update, td.last_update {
+	width:20em;
+}
+td.last_update {
+	background-color:#CCC;
 }

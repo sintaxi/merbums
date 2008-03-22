@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th>Forums</th>
-      <th>Last Post</th>
+      <th class="last_update">Last Post</th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +19,9 @@
       <%= forum.description_html %>
       <p><small></small></p>
     </td>
-    <td>
+    <td class="last_update">
       <p>
-        <%= forum.posts.reverse.first.updated_at %>
+        <%= forum.posts.empty? ? "Never" : forum.posts.reverse.first.updated_at %>
       </p>
     </td>
   </tr>

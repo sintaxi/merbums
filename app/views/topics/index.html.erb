@@ -5,16 +5,16 @@
   <thead>
     <tr>
       <th>Topics</th>
-      <th>Posts</th>
-      <th>Last Update</th>
+      <th class="post_count">Posts</th>
+      <th class="last_update">Last Update</th>
     </tr>
   </thead>
   <tbody>
     <% @forum.topics.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, url(:forum_topic,topic) %></td>
-        <td><%= topic.posts.size %></td>
-        <td><%= topic.posts.reverse.first.updated_at %></td>
+        <td class="post_count"><%= topic.posts.size %></td>
+        <td class="last_update"><%= topic.posts.reverse.first.updated_at %></td>
       </tr>
     <% end %>
   </tbody>
