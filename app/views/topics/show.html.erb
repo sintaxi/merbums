@@ -1,0 +1,15 @@
+<h2><%= @topic.title %></h2>
+<% @topic.posts.each do |post| %>
+  <div>
+    <%= post.body_html %>
+    <p><small>Posted by <%= post.user.login %></small></p>
+  </div>
+<% end %>
+
+
+
+
+<% form_for @post, :action => url(:forum_topic_post,{:forum_id => @forum, :topic_id => @topic}) do %>
+  <p><%= text_area_control :body, :label => "Post" %></p>
+  <p><%= submit_button "Submit" %></p>
+<% end %>

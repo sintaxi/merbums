@@ -1,0 +1,9 @@
+<h2><%= @forum.name %></h2>
+<div><%= @forum.description_html %></div>
+
+<h3>Topics</h3>
+<% @forum.topics.each do |topic| %>
+  <div>
+    <p><%= link_to topic.title, url(:forum_topic,topic) %></p>
+  </div>
+<% end %>

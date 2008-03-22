@@ -1,0 +1,18 @@
+---
+# This is a puts_threads database file for the ActiveRecord ORM
+:development: &defaults
+  :adapter: mysql
+  :database: merbums_development
+  :username: root
+  :password: 
+  :host: localhost
+  :socket: /tmp/mysql.sock
+  :encoding: utf8
+
+:test:
+  <<: *defaults
+  :database: puts_threads_test
+
+:production:
+  <<: *defaults
+  :database: puts_threads_production

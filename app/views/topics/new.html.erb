@@ -1,0 +1,7 @@
+<h2>Creating a New Topic</h2>
+
+<% form_for @topic, :action => url(:forum_topic, :forum_id => @forum) do %>
+  <p><%= text_control :title, :label => "Title" %></p>
+  <p><%= text_area_control :body, :label => "Post" %></p>
+  <p><%= submit_button "Submit" %></p>
+<% end %>
