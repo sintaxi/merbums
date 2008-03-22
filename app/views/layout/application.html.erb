@@ -21,9 +21,9 @@
     </div>
     <div class="content">
       <% if controller_name == 'topics' && action_name == 'index' %>
-        <p><%= link_to "Home", url(:forums) %> - <%= link_to @forum.name, url(:forum_topic,:forum_id => @forum) %></p>
+        <p><%= link_to "Home", url(:forums) %></p>
       <% elsif controller_name == 'topics' && action_name == 'show' %>
-        <p><%= link_to "Home", url(:forums) %> - <%= link_to @forum.name, url(:forum_topics,:forum_id => @forum) %> - <%= link_to @topic.title, url(:forum_topic,@topic) %></p>
+        <p><%= link_to "Home", url(:forums) %> - <%= link_to @forum.name, url(:forum_topics,:forum_id => @forum) %></p>
       <% end %>
     
       <%= catch_content :for_layout %>
