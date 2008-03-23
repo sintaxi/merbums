@@ -6,6 +6,8 @@ class Forum < ActiveRecord::Base
   before_save :formatted_description
   before_save :create_permalink
   
+  validates_presence_of :name, :description
+  
   def to_param
     permalink
   end
