@@ -21,6 +21,10 @@
       </ul>
     </div>
     <div class="content">
+      <div class="notice">
+        <h2>Welcome to Merbums!</h2>
+        <p>Merbums is a merb powered forum heavily inspired by Beast.</p>
+        <p>This is a development deployment, there will be bugs, errros, and maybe even occasional database emptying. Feel free to register and play around, also post any bugs or feature requests you may have.</p></div>
       <% if controller_name == 'topics' && action_name == 'index' %>
         <p><%= link_to "Home", url(:forums) %></p>
       <% elsif controller_name == 'topics' && action_name == 'show' %>
