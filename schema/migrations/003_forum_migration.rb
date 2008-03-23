@@ -13,6 +13,6 @@ class ForumMigration < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :forum
+    drop_table :forums
   end
 end
