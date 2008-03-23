@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Fora do
+describe Forum do
 
   it "should have specs"
 

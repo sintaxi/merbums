@@ -1,0 +1,9 @@
+CREATE TABLE forums ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) DEFAULT NULL, "description" varchar(255) DEFAULT NULL, "description_html" text DEFAULT NULL, "position" integer DEFAULT NULL, "posts_count" integer DEFAULT 0, "topics_count" integer DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "permalink" varchar(255));
+CREATE TABLE posts ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text DEFAULT NULL, "body_html" text DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "topic_id" integer DEFAULT NULL, "forum_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL);
+CREATE TABLE schema_info (version integer);
+CREATE TABLE sessions ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" text DEFAULT NULL, "data" text DEFAULT NULL);
+CREATE TABLE topics ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255) DEFAULT NULL, "sticky" boolean DEFAULT 'f', "locked" boolean DEFAULT 'f', "posts_count" integer DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "forum_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "permalink" varchar(255));
+CREATE TABLE users ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255) DEFAULT NULL, "email" varchar(255) DEFAULT NULL, "crypted_password" varchar(40) DEFAULT NULL, "salt" varchar(40) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "remember_token" varchar(255) DEFAULT NULL, "remember_token_expires_at" varchar(255) DEFAULT NULL, "topics_count" integer DEFAULT 0, "posts_count" integer DEFAULT 0, "admin" boolean DEFAULT 'f');
+CREATE INDEX "index_forums_on_permalink" ON forums ("permalink");
+CREATE INDEX "index_topics_on_permalink" ON topics ("permalink");
+INSERT INTO schema_info (version) VALUES (8)
