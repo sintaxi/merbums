@@ -5,16 +5,16 @@ class Topics < Application
   before :find_forum
   
   def find_forum
-    @forum ||= Forum.find(params[:forum_id])
+    @forum ||= Forum.find_by_param(params[:forum_id])
   end
   
   def index
-    @topics = Topic.find(:all)
+    @topics = @forum.topics.find(:all)
     display @topics
   end
 
   def show
-    @topic = Topic.find_by_id(params[:id])
+    @topic = Topic.find_by_param(params[:id])
     @post = Post.new
     raise NotFound unless @topic
     display @topic
@@ -29,7 +29,7 @@ class Topics < Application
   def create
     @topic = @forum.topics.new(params[:topic].merge(:user => current_user))
     if @topic.save
-      redirect url(:forum_topic_posts,:topic_id => @topic)
+      redirect url(:forum_topic, { :forum_id => @forum, :id => @topic })
     else
       render :new
     end
@@ -37,13 +37,13 @@ class Topics < Application
 
   def edit
     only_provides :html
-    @topic = Topic.find_by_id(params[:id])
+    @topic = Topic.find_by_param(params[:id])
     raise NotFound unless @topic
     render
   end
 
   def update
-    @topic = Topic.find_by_id(params[:id])
+    @topic = Topic.find_by_param(params[:id])
     raise NotFound unless @topic
     if @topic.update_attributes(params[:topic])
       redirect url(:forum_topic_posts,:topic_id => @topic)
@@ -53,7 +53,7 @@ class Topics < Application
   end
 
   def destroy
-    @topic = Topic.find_by_id(params[:id])
+    @topic = Topic.find_by_param(params[:id])
     raise NotFound unless @topic
     if @topic.destroy
       redirect url(:topics)

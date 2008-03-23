@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   belongs_to :forum, :counter_cache => true
   belongs_to :topic, :counter_cache => true
   belongs_to :user, :counter_cache => true
-
+  
   def body_to_html
     #textilize body and save as body_html
   end

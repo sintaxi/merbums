@@ -1,4 +1,4 @@
-<% form_for @post, :action => url(:forum_topic_post,@post) do %>
+<% form_for @post, :action => url(:forum_topic_post, :forum_id => @forum, :topic_id => @topic, :id => @post) do %>
   <% fieldset :legend => "Edit Post" do %>
     <p><%= text_area_control :body, :label => "Body" %></p>
     <p><%= submit_button "Submit" %></p>

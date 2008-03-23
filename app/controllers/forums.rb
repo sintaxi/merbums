@@ -8,7 +8,7 @@ class Forums < Application
   end
 
   def show
-    @forum = Forum.find_by_id(params[:id], :include => :topics)
+    @forum = Forum.find_by_param(params[:id], :include => :topics)
     raise NotFound unless @forum
     display @forum
   end
@@ -30,13 +30,13 @@ class Forums < Application
 
   def edit
     only_provides :html
-    @forum = Forum.find_by_id(params[:id])
+    @forum = Forum.find_by_param(params[:id])
     raise NotFound unless @forum
     render
   end
 
   def update
-    @forum = Forum.find_by_id(params[:id])
+    @forum = Forum.find_by_param(params[:id])
     raise NotFound unless @forum
     if @forum.update_attributes(params[:forum])
       redirect url(:forums)
@@ -46,7 +46,7 @@ class Forums < Application
   end
 
   def destroy
-    @forum = Forum.find_by_id(params[:id])
+    @forum = Forum.find_by_param(params[:id])
     raise NotFound unless @forum
     if @forum.destroy
       redirect url(:forums)
