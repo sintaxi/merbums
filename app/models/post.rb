@@ -2,7 +2,6 @@ class Post < ActiveRecord::Base
   
   before_save :formatted_body
 
-  has_one :user
   belongs_to :forum, :counter_cache => true
   belongs_to :topic, :counter_cache => true
   belongs_to :user, :counter_cache => true
