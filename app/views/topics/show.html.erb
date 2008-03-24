@@ -15,7 +15,7 @@
           <%= post.user.login %><br />
           <%= post.user.posts.size %> Posts</p>
         </td>
-        <td><div><%= link_to "Edit", url(:edit_forum_topic_post, post ) if can_edit?(post) %></div><%= post.body_html %></td>
+        <td><div><%= link_to "Edit", url(:edit_forum_topic_post,{ :forum_id => @forum,:topic_id => @topic, :id => post} ) if can_edit?(post) %></div><%= post.body_html %></td>
       </tr>
     <% end %>
   </tbody>
