@@ -13,7 +13,7 @@
     <% @topics.each do |topic| %>
       <tr>
         <td>
-          <%= link_to topic.title, url(:forum_topic, { :forum_id => @forum, :id => topic }) %>
+          <%= link_to topic.title, url(:forum_topic, topic ) %>
         </td>
         <td class="post_count"><%= topic.posts.size %></td>
         <td class="last_update"><%= topic.posts.reverse.first.updated_at %></td>

@@ -20,6 +20,7 @@ class Users < Application
     @user = User.new(params[:user])
     @user.admin = true if User.find(:all).empty?
     if @user.save
+      self.current_user = @user
       redirect_back_or_default('/')
     else
       render :new

@@ -23,8 +23,8 @@
 
 :test:
   <<: *defaults
-  :database: puts_threads_test
+  :database: merbums_test
 
 :production:
   <<: *defaults
-  :database: puts_threads_production
+  :database: merbums_production
