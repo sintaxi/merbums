@@ -3,7 +3,7 @@ class Forums < Application
   before :login_required, :exclude => [:index, :show]
   
   def index
-    @forums = Forum.find(:all, :order => "position")
+    @forums = Forum.find(:all, :order => "position", :include => :latest_post)
     display @forums
   end
 

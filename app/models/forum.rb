@@ -2,6 +2,9 @@ class Forum < ActiveRecord::Base
   
   has_many :topics
   has_many :posts
+  has_one :latest_post,
+    :class_name => 'Post',
+    :order => "created_at DESC"
   
   before_save :formatted_description
   before_save :create_permalink

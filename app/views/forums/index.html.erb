@@ -15,13 +15,13 @@
   <tr>
     <td>
       <%= link_to forum.name, url(:forum_topics, :forum_id => forum), :class => "forum_title" %>
-      <p><%= forum.topics.size %> Topics - <%= forum.posts.size %> Posts</p>
+      <p><%= forum.topics_count %> Topics - <%= forum.posts_count %> Posts</p>
       <%= forum.description_html %>
       <p><small></small></p>
     </td>
     <td class="last_update">
       <p>
-        <%= forum.posts.empty? ? "Never" : forum.posts.reverse.first.updated_at %>
+        <%= forum.posts_count == 0 ? "Never" : forum.latest_post.updated_at %>
       </p>
     </td>
   </tr>

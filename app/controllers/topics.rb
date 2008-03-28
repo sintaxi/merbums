@@ -9,12 +9,12 @@ class Topics < Application
   end
   
   def index
-    @topics = @forum.topics.find(:all)
+    @topics = @forum.topics.find(:all, :include => :posts)
     display @topics
   end
 
   def show
-    @topic = Topic.find_by_param(params[:id])
+    @topic = Topic.find_by_param(params[:id], :include => [:posts => [:attachments, :user]])
     @post = Post.new
     raise NotFound unless @topic
     display @topic
