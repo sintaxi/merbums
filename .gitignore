@@ -5,3 +5,4 @@ schema/schema.rb
 log/*
 gems
 script
+public/uploads

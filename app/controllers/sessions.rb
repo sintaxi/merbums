@@ -13,6 +13,7 @@ class Sessions < Application
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
+      flash[:notice] = "Welcome back, " + self.current_user.login
       redirect_back_or_default('/')
     else
       render :new

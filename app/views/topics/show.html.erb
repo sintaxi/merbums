@@ -15,19 +15,16 @@
           <%= post.user.login %><br />
           <%= post.user.posts.size %> Posts</p>
         </td>
-        <td><div><%= link_to "Edit", url(:edit_forum_topic_post,{ :forum_id => @forum,:topic_id => @topic, :id => post} ) if can_edit?(post) %></div><%= post.body_html %></td>
+        <td>
+          <div><%= link_to "Edit", url(:edit_forum_topic_post,{ :forum_id => @forum,:topic_id => @topic, :id => post} ) if can_edit?(post) %></div><%= post.body_html %>
+          <%= tag :p, "Attachments" unless post.attachments.empty? %>
+          <% post.attachments.each do |attachment| %>
+          <p><%= link_to attachment.title, attachment.path %></p>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% if logged_in? %>
-  <% form_for @post, :action => url(:forum_topic_post, { :forum_id => @forum, :topic_id => @topic }) do %>
-    <% fieldset :legend => "Post a Reply" do %>
-      <p><%= text_area_control :body, :label => "Reply" %></p>
-      <p><%= submit_button "Submit" %></p>
-    <% end %>
-  <% end %>
-<% else %>
-<p><%= link_to "Login", url(:login) %> to reply</p>
-<% end %>
+<%= partial :post_form, :with => @post if logged_in? %>

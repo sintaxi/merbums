@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   
-  has_many :posts
+  has_many :posts, :order => :updated_at
   belongs_to :forum, :counter_cache => true
   belongs_to :user, :counter_cache => true
   

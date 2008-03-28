@@ -11,6 +11,7 @@ class Posts < Application
   def create
     @post = Post.new(params[:post].merge({ :user => current_user, :forum => @forum, :topic => @topic }))
     if @post.save
+      flash[:notice] = "Post Created"
       redirect url(:forum_topic, { :forum_id => @forum, :id => @topic })
     else
       render :new
@@ -28,6 +29,7 @@ class Posts < Application
     @post = Post.find(params[:id])
     raise NotFound unless @post
     if @post.update_attributes(params[:post])
+      flash[:notice] = "Post Updated"
       redirect url(:forum_topic, { :forum_id => @forum, :id => @topic })
     else
       raise BadRequest

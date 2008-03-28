@@ -26,6 +26,9 @@
         <p>Merbums is a merb powered forum heavily inspired by Beast.</p>
         <p>Git repo at <a href="http://github.com/shayarnett/merbums/tree/master">http://github.com/shayarnett/merbums/tree/master</a>.</p>
         <p>This is a development deployment, there will be bugs, errros, and maybe even occasional database emptying. Feel free to register and play around, also post any bugs or feature requests you may have.</p></div>
+      <% if flash[:notice] %><div class="notice"><%= flash[:notice] %></div><% end %>
+      <% if flash[:error] %><div class="error"><%= flash[:error] %></div><% end %>
+      <% if flash[:message] %><div class="notice"><%= flash[:message] %></div><% end %>
       <% if controller_name == 'topics' && action_name == 'index' %>
         <p><%= link_to "Home", url(:forums) %></p>
       <% elsif controller_name == 'topics' && action_name == 'show' %>

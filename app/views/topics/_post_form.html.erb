@@ -1,0 +1,7 @@
+<% form_for @post, :action => url(:forum_topic_post, { :forum_id => @forum, :topic_id => @topic }), :multipart => true do %>
+  <% fieldset :legend => "Post a Reply" do %>
+    <p><%= text_area_control :body, :label => "Reply" %></p>
+    <p><%= file_control :attachments, :label => "Attach a file" %></p>
+    <p><%= submit_button "Submit" %></p>
+  <% end %>
+<% end %>

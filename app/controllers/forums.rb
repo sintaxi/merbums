@@ -22,6 +22,7 @@ class Forums < Application
   def create
     @forum = Forum.new(params[:forum])
     if @forum.save
+      flash[:notice] = @forum.name + " created successfully"
       redirect url(:forums)
     else
       render :new
@@ -39,6 +40,7 @@ class Forums < Application
     @forum = Forum.find_by_param(params[:id])
     raise NotFound unless @forum
     if @forum.update_attributes(params[:forum])
+      flash[:notice] = @forum.name + " updated successfully"
       redirect url(:forums)
     else
       raise BadRequest

@@ -1,7 +1,7 @@
-class Post < ActiveRecord::Base
-  
+class Post < ActiveRecord::Base  
   before_save :formatted_body
 
+  has_many :attachments
   belongs_to :forum, :counter_cache => true
   belongs_to :topic, :counter_cache => true
   belongs_to :user, :counter_cache => true
@@ -13,5 +13,10 @@ class Post < ActiveRecord::Base
   def formatted_body
     write_attribute(:body_html, RedCloth.new(Whistler.white_list(body)).to_html  )
   end
+  
+  def attachments=(upload)
+    self.attachments.build(upload) unless upload.empty?
+  end
+  
   
 end
